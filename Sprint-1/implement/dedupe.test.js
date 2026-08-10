@@ -16,13 +16,27 @@ E.g. dedupe([1, 2, 1]) returns [1, 2]
 // Given an empty array
 // When passed to the dedupe function
 // Then it should return an empty array
-test.todo("given an empty array, it returns an empty array");
+test("given an empty array, it returns an empty array", () => {
+    expect(dedupe([])).toEqual([]);
+});
 
 // Given an array with no duplicates
 // When passed to the dedupe function
 // Then it should return a copy of the original array
+test("given an with no duplicates, it returns a copy of the original array", () => {
+    expect(dedupe(['a'])).toEqual(['a']);
+    expect(dedupe([1])).toEqual([1]);
+    expect(dedupe(['a','b','c'])).toEqual(['a','b','c']);
+    expect(dedupe([5, 1, 2, 3, 8])).toEqual([5, 1, 2, 3, 8]);
+});
 
 // Given an array of strings or numbers
 // When passed to the dedupe function
 // Then it should return a new array with duplicates removed while preserving the 
 // first occurrence of each element from the original array.
+test("given an array of strings or numbers, it returns a new array with duplicates removed", () => {
+    expect(dedupe(['a','a','a','b','b','c'])).toEqual(['a','b','c']);
+    expect(dedupe([5, 1, 1, 2, 3, 2, 5, 8])).toEqual([5, 1, 2, 3, 8]);
+    expect(dedupe([1, 'b', 1])).toEqual([1, 'b']);
+    expect(dedupe(['a', 2, 'a'])).toEqual(['a', 2]);
+});
