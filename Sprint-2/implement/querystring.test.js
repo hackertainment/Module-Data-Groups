@@ -9,6 +9,7 @@ test("should parse values containing '='", () => {
   expect(parseQueryString("equation=a=b-2")).toEqual({
     equation: "a=b-2",
   });
+  expect(parseQueryString("==")).toEqual({ "": "=" });
 });
 
 test("should ignore empty key-value pairs", () => {
@@ -28,6 +29,12 @@ test("should accept empty string as key or as value", () => {
 test("should decode percent-encoded characters", () => {
   expect(parseQueryString("%24half=1%2F2")).toEqual({
     $half: "1/2",
+  });
+  expect(parseQueryString("equation%3Da=b-2")).toEqual({
+    "equation=a": "b-2",
+  });
+  expect(parseQueryString("full%2Bname=John%2BDoe")).toEqual({
+    "full+name": "John+Doe",
   });
 });
 
