@@ -14,4 +14,5 @@ test("invert on an object returns swapped keys and values", () => {
 test("invert on an object with duplicate stringify values throws an error", () => {
     expect(() => {invert({a:1, b:1});}).toThrow();
     expect(() => {invert({a:"", b:[]});}).toThrow();
+    expect(() => {invert({a:{}, b:{c:1}});}).toThrow();
 });
