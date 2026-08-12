@@ -21,7 +21,7 @@ as the object doesn't contains a key of 'c'
 // When passed to contains
 // Then it should return false
 test("contains on empty object returns false", () => {
-    expect(contains({}, "c")).toEqual(false);
+    expect(contains({}, "b")).toEqual(false);
 });
 
 // Given an object with properties
@@ -42,16 +42,16 @@ test("contains on object with a non-existent property name returns false", () =>
 // When passed to contains
 // Then it should return false or throw an error
 test("contains on invalid object returns false", () => {
-    expect(contains([], "c")).toEqual(false);
-    expect(contains("", "c")).toEqual(false);
-    expect(contains(true, "c")).toEqual(false);
-    expect(contains(0, "c")).toEqual(false);
-    expect(contains(0n, "c")).toEqual(false);
-    expect(contains(NaN, "c")).toEqual(false);
-    expect(contains(Symbol(), "c")).toEqual(false);
-    expect(contains(new Map(), "c")).toEqual(false);
-    expect(contains(new Set(), "c")).toEqual(false);
-    expect(contains(undefined, "c")).toEqual(false);
-    expect(contains(null, "c")).toEqual(false);
-    expect(contains(function(){}, "c")).toEqual(false);
+    expect(contains([], "b")).toEqual(false);
+    expect(contains("", "b")).toEqual(false);
+    expect(contains(true, "b")).toEqual(false);
+    expect(contains(0, "b")).toEqual(false);
+    expect(contains(0n, "b")).toEqual(false);
+    expect(contains(NaN, "b")).toEqual(false);
+    expect(contains(Symbol(), "b")).toEqual(false);
+    expect(contains(new Map(), "b")).toEqual(false);
+    expect(contains(new Set(), "b")).toEqual(false);
+    expect(contains(undefined, "b")).toEqual(false);
+    expect(contains(null, "b")).toEqual(false);
+    expect(contains(function(){}, "b")).toEqual(false);
 });
