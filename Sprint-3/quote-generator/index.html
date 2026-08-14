@@ -18,7 +18,10 @@
         document.querySelector("#quote").innerText = gens.quote;
         document.querySelector("#author").innerText = gens.author;
       }
-      document.querySelector("#new-quote").addEventListener("click", genQuote);
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector("#new-quote").addEventListener("click", genQuote);
+        document.querySelector("#new-quote").click();
+      });
     </script>
   </body>
 </html>
