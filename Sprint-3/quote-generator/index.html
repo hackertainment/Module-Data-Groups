@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Title here</title>
+    <title>Quote generator app</title>
     <script defer src="quotes.js"></script>
   </head>
   <body>
@@ -11,5 +11,30 @@
     <p id="quote"></p>
     <p id="author"></p>
     <button type="button" id="new-quote">New quote</button>
+    <br><input type="checkbox" id="auto-generate" /><label for="auto-generate">auto-play:OFF</label>
+
+    <script>
+      function genQuote() {
+        let gens = pickFromArray(quotes);
+        document.querySelector("#quote").innerText = gens.quote;
+        document.querySelector("#author").innerText = gens.author;
+      }
+      function autoGen() {
+        if (document.querySelector("#auto-generate").checked) {
+          document.querySelector("label").value = "auto-play:ON";
+          interval = setInterval(genQuote, 60000);
+        }
+        else {
+          clearInterval(interval);
+          document.querySelector("label").value = "auto-play:OFF";
+        }
+      }
+      let interval = null;
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector("#new-quote").addEventListener("click", genQuote);
+        document.querySelector("#new-quote").click();
+        document.querySelector("#auto-generate").addEventListener("change", autoGen);
+      });
+    </script>
   </body>
 </html>
