@@ -4,16 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quote generator app</title>
-    <script defer src="quotes.js">
-      let gens = pickFromArray(quotes);
-      document.querySelector("#quote").innerText = gens.quote;
-      document.querySelector("#author").innerText = gens.author;
-    </script>
+    <script defer src="quotes.js"></script>
   </head>
   <body>
     <h1>hello there</h1>
     <p id="quote"></p>
     <p id="author"></p>
     <button type="button" id="new-quote">New quote</button>
+
+    <script>
+      function genQuote() {
+        let gens = pickFromArray(quotes);
+        document.querySelector("#quote").innerText = gens.quote;
+        document.querySelector("#author").innerText = gens.author;
+      }
+      document.querySelector("#new-quote").addEventListener("click", genQuote);
+    </script>
   </body>
 </html>
