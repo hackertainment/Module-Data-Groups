@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quote generator app</title>
-    <script defer src="quotes.js"></script>
+    <script defer src="quotes.js">
+      let gens = pickFromArray(quotes);
+      document.querySelector("#quote").innerText = gens.quote;
+      document.querySelector("#author").innerText = gens.author;
+    </script>
   </head>
   <body>
     <h1>hello there</h1>
