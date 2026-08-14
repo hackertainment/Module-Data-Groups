@@ -1,3 +1,6 @@
+let gens = pickFromArray(quotes);
+document.querySelector("#quote").innerText = gens.quote;
+document.querySelector("#author").innerText = gens.author;
 // DO NOT EDIT BELOW HERE
 
 // pickFromArray is a function which will return one item, at
