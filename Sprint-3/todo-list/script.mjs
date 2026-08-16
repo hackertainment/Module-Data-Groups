@@ -6,6 +6,7 @@ const todos = [];
 
 // Set up tasks to be performed once on page load
 window.addEventListener("load", () => {
+  document.getElementById("delete-completed-btn").addEventListener("click", deleteCompletedTodo);
   document.getElementById("add-task-btn").addEventListener("click", addNewTodo);
 
   // Populate sample data
@@ -15,6 +16,12 @@ window.addEventListener("load", () => {
   render();
 });
 
+
+// A callback that deletes completed tasks from the todo list.
+function deleteCompletedTodo() {
+  Todos.deleteCompleted(todos);
+  render();
+}
 
 // A callback that reads the task description from an input field and 
 // append a new task to the todo list.

@@ -52,6 +52,23 @@ h1 {
   background-color: #45a049;
 }
 
+.done-button button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #AF4C50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-bottom: 20px;
+}
+
+.done-button button:hover {
+  background-color: #a04549;
+}
+
 .todo-list {
   list-style-type: none;
   padding-left: 0;

@@ -130,3 +130,36 @@ describe("toggleCompletedOnTask()", () => {
   });
 });
 
+describe("deleteCompleted()", () => {
+
+  test("Delete the completed task", () => {
+    const todos = createMockTodos();
+    const todosBeforeDeletion = createMockTodos();
+    const lengthBeforeDeletion = todos.length;
+    Todos.deleteCompleted(todos);
+
+    expect(todos).toHaveLength(lengthBeforeDeletion - 2);
+
+    expect(todos[0]).toEqual(todosBeforeDeletion[1]);
+    expect(todos[1]).toEqual(todosBeforeDeletion[3]);
+  });
+
+  test("Delete with no completed task", () => {
+    let todos = [];
+    Todos.addTask(todos, theTask.task, theTask.completed);
+    let todosBeforeDeletion = [];
+    Todos.addTask(todosBeforeDeletion, theTask.task, theTask.completed);
+    Todos.deleteCompleted(todos);
+
+    expect(todos).toHaveLength(lengthBeforeDeletion);
+
+    expect(todos[0]).toEqual(todosBeforeDeletion[0]);
+  });
+
+  test("Delete the empty task", () => {
+    const todos = [];
+    const todosBeforeDeletion = [];
+    Todos.deleteCompleted(todos);
+    expect(todos).toEqual(todosBeforeDeletion);
+  });
+});

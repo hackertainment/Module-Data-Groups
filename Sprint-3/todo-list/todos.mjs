@@ -27,3 +27,16 @@ export function toggleCompletedOnTask(todos, taskIndex) {
     todos[taskIndex].completed = !todos[taskIndex].completed;
   }
 }
+
+// Removes all completed ToDos from todos[]
+export function deleteCompleted(todoList) {
+  let i = 0;
+  while (i<todoList.length) {
+    if (todoList[i].completed) {
+      deleteTask(todoList, i);
+    }
+    else {
+      i++;
+    }
+  }
+}
