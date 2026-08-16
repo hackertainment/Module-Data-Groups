@@ -72,7 +72,29 @@ function createListItem(todo, index) {
     li.classList.add("completed");
   }
 
-  li.querySelector(".deadline").textContent = todo.deadline;
+  if (!todo.completed && todo.deadline!="") {
+    const deadline = new Date(todo.deadline);  // when the time zone offset is absent, date-only forms are interpreted as a UTC time
+    const now = new Date();
+    const today = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+    const diff = Math.ceil((today.getTime()-deadline.getTime())/1000/60/60/24);
+    if (diff<0) {
+      li.querySelector(".deadline").textContent = "D"+diff;
+    }
+    else if (diff==0) {
+      li.querySelector(".deadline").textContent = "D-day";
+      li.classList.add("dueday");
+    }
+    else if (diff>0) {
+      li.querySelector(".deadline").textContent = "D+"+diff;
+      li.classList.add("overdue");
+    }
+    else {
+      li.querySelector(".deadline").textContent = todo.deadline;
+    }
+  }
+  else {
+    li.querySelector(".deadline").textContent = todo.deadline;
+  }
 
   li.querySelector('.complete-btn').addEventListener("click", () => {
     Todos.toggleCompletedOnTask(todos, index);

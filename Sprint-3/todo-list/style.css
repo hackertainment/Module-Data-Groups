@@ -122,3 +122,15 @@ h1 {
   text-decoration: line-through;
   color: gray;
 }
+
+.todo-item.dueday .deadline {
+  color: green;
+}
+
+.todo-item.overdue .deadline {
+  color: red;
+}
+
+.todo-item.completed .deadline {
+  color: gray;
+}
