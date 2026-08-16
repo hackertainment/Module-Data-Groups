@@ -28,6 +28,31 @@ function setAlarm() {
   }
 }
 
+function pauseTimer() {
+  if (timer!=null) {
+    clearInterval(timer);
+    timer = null;
+    document.getElementById("pause").innerText = "Continue Timer";
+  }
+  else {
+    document.getElementById("pause").innerText = "Pause Timer";
+    [minstr, secstr] = document.getElementById("timeRemaining").innerHTML.slice(16).split(":");
+    second = Number(minstr)*60+Number(secstr);
+    timer = setInterval(() => {
+      if (second>0) {
+        second--;
+        showAlarm(second);
+      }
+    }, 1000);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById("pause").addEventListener("click", () => {
+    pauseTimer();
+  });
+});
+
 // DO NOT EDIT BELOW HERE
 
 var audio = new Audio("alarmsound.mp3");
