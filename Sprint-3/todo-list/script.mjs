@@ -10,8 +10,8 @@ window.addEventListener("load", () => {
   document.getElementById("add-task-btn").addEventListener("click", addNewTodo);
 
   // Populate sample data
-  Todos.addTask(todos, "Wash the dishes", false); 
-  Todos.addTask(todos, "Do the shopping", true);
+  Todos.addTask(todos, "Wash the dishes", "", false); 
+  Todos.addTask(todos, "Do the shopping", "", true);
 
   render();
 });
@@ -28,12 +28,15 @@ function deleteCompletedTodo() {
 function addNewTodo() {
   const taskInput = document.getElementById("new-task-input");
   const task = taskInput.value.trim();
+  const taskDeadline = document.getElementById("new-task-deadline");
+  const deadline = taskDeadline.value.trim();
   if (task) {
-    Todos.addTask(todos, task, false);
+    Todos.addTask(todos, task, deadline, false);
     render();
   }
 
   taskInput.value = "";
+  taskDeadline.value = "";
 }
 
 // Note:
@@ -68,6 +71,8 @@ function createListItem(todo, index) {
   if (todo.completed) {
     li.classList.add("completed");
   }
+
+  li.querySelector(".deadline").textContent = todo.deadline;
 
   li.querySelector('.complete-btn').addEventListener("click", () => {
     Todos.toggleCompletedOnTask(todos, index);

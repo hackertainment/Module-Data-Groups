@@ -3,15 +3,15 @@
   the following manner:
 
   [
-    { task: "Description of task 1", completed: false},
-    { task: "Description of task 2", completed: true}
+    { task: "Description of task 1", deadline: "", completed: false},
+    { task: "Description of task 2", deadline: "", completed: true}
   ]
 
 */
 
 // Append a new task to todos[]
-export function addTask(todos, task, completed = false) {
-  todos.push({ task, completed });
+export function addTask(todos, task, deadline = "", completed = false) {
+  todos.push({ task, deadline, completed });
 }
 
 // Delete todos[taskIndex] if it exists

@@ -10,20 +10,20 @@ import * as Todos from "./todos.mjs";
 // Return a mock ToDo List data with exactly 4 elements.
 function createMockTodos() {
   return [
-    { task: "Task 1 description", completed: true },
-    { task: "Task 2 description", completed: false },
-    { task: "Task 3 description", completed: true },
-    { task: "Task 4 description", completed: false },        
+    { task: "Task 1 description", deadline: "", completed: true },
+    { task: "Task 2 description", deadline: "", completed: false },
+    { task: "Task 3 description", deadline: "", completed: true },
+    { task: "Task 4 description", deadline: "", completed: false },        
   ];
 }
 
 // A mock task to simulate user input
-const theTask = { task: "The Task", completed: false };
+const theTask = { task: "The Task", deadline: "2000-01-23", completed: false };
 
 describe("addTask()", () => {
   test("Add a task to an empty ToDo list", () => {
     let todos = [];
-    Todos.addTask(todos, theTask.task, theTask.completed);
+    Todos.addTask(todos, theTask.task, theTask.deadline, theTask.completed);
     expect(todos).toHaveLength(1);
     expect(todos[0]).toEqual(theTask);
   });
@@ -32,7 +32,7 @@ describe("addTask()", () => {
 
     const todos = createMockTodos();
     const lengthBeforeAddition = todos.length;
-    Todos.addTask(todos, theTask.task, theTask.completed);
+    Todos.addTask(todos, theTask.task, theTask.deadline, theTask.completed);
     // todos should now have one more task
     expect(todos).toHaveLength(lengthBeforeAddition + 1);
 
@@ -146,9 +146,9 @@ describe("deleteCompleted()", () => {
 
   test("Delete with no completed task", () => {
     let todos = [];
-    Todos.addTask(todos, theTask.task, theTask.completed);
+    Todos.addTask(todos, theTask.task, theTask.deadline, theTask.completed);
     let todosBeforeDeletion = [];
-    Todos.addTask(todosBeforeDeletion, theTask.task, theTask.completed);
+    Todos.addTask(todosBeforeDeletion, theTask.task, theTask.deadline, theTask.completed);
     Todos.deleteCompleted(todos);
 
     expect(todos).toHaveLength(lengthBeforeDeletion);
