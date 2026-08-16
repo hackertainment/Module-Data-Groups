@@ -152,6 +152,24 @@ body {
   background: #87ca8a;
 }
 
+.book {
+  margin-bottom: 1em;
+}
+
+.book.false {
+  background-color: red;
+}
+
+.book.true {
+  background-color: green;
+}
+
+.cover {
+  display: block;
+  margin-top: 1em;
+  max-width: 20%;
+}
+
 @media screen and (min-width: 992px) {
   .navbar-brand > img {
     max-height: 80px;

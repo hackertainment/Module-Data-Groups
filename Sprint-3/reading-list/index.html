@@ -4,11 +4,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Title here</title>
+    <title>Reading list app</title>
   </head>
   <body>
     <div id="content">
       <ul id="reading-list"></ul>
+
+      <!-- 
+        This is a template for the reading-list book. 
+        It can simplify the creation of list item node in JS script.
+      -->
+      <template id="book-template">
+        <li class="book"> <!-- include class "true" or "false" of the book already read -->
+          <span class="title">Title</span>
+          by
+          <span class="author">Author</span>
+          <img class="cover" />
+        </li>
+      </template>
+
     </div>
     <script src="script.js"></script>
   </body>
