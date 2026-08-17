@@ -32,27 +32,57 @@ function nextSlide() {
     document.getElementById("carousel-img").src = images[index];
 }
 
+let count = null;
 let timer = null;
 
-function stopAuto() {
+function stopTimer() {
     if (timer!=null) {
         clearInterval(timer);
         timer = null;
+        document.getElementById("time-remaining").innerHTML = "--:--";
+    }
+}
+
+function startTimer() {
+    let [minstr, secstr] = "00:05".split(":");
+    let second = Number(minstr)*60+Number(secstr);
+
+    stopTimer();
+    document.getElementById("time-remaining").innerHTML = minstr+":"+secstr;
+    timer = setInterval(() => {
+        if (second>0) {
+            second--;
+            minstr = Math.floor(second/60).toString().padStart(2, "0");
+            secstr = (second%60).toString().padStart(2, "0");
+            document.getElementById("time-remaining").innerHTML = minstr+":"+secstr;
+        }
+    }, 1000);
+}
+
+function stopAuto() {
+    stopTimer();
+    if (count!=null) {
+        clearInterval(count);
+        count = null;
     }
 }
 
 function prevAuto() {
     stopAuto();
+    startTimer();
     prevSlide();
-    timer = setInterval(() => {
+    count = setInterval(() => {
+        startTimer();
         prevSlide();
     }, 5000);
 }
 
 function nextAuto() {
     stopAuto();
+    startTimer();
     nextSlide();
-    timer = setInterval(() => {
+    count = setInterval(() => {
+        startTimer();
         nextSlide();
     }, 5000);
 }
