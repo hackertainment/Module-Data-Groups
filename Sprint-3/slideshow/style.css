@@ -1,1 +1,6 @@
 /** Write your CSS in here **/
+#carousel-img {
+    display: block;
+    height: 50vh;
+    margin-bottom: 1em;
+}
