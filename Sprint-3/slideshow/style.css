@@ -1,6 +1,126 @@
 /** Write your CSS in here **/
+body {
+    margin-left: 10vw;
+    display: inline-flex;
+    flex-direction: column;
+}
+
 #carousel-img {
-    display: block;
-    height: 50vh;
-    margin-bottom: 1em;
+    object-fit: contain;
+    width: 80vw;
+    height: 80vh;
+    background-color: black;
+}
+
+#time-container {
+    align-self: flex-end;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#time-background {
+    background-color: gray;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#time-remaining {
+    text-align: right;
+    font-weight: bold;
+    color: silver;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#btn-container {
+    align-self: center;
+    margin-top: 3em;
+}
+
+#backward-auto-btn {
+    /*  data:image/svg+xml;utf8,
+        <svg xmlns='http://www.w3.org/2000/svg' height='32' width='32' fill='#000000' viewBox='0 0 32 32' transform='matrix(-1,0,0,1,0,0)'>
+        <path d='M26.6,15.2l-9-7c-0.3-0.2-0.7-0.3-1.1-0.1C16.2,8.3,16,8.6,16,9v5L8.6,8.2C8.3,8,7.9,7.9,7.6,8.1C7.2,8.3,7,8.6,7,9v14c0,0.4,0.2,0.7,0.6,0.9C7.7,24,7.9,24,8,24c0.2,0,0.4-0.1,0.6-0.2L16,18v5c0,0.4,0.2,0.7,0.6,0.9C16.7,24,16.9,24,17,24c0.2,0,0.4-0.1,0.6-0.2l9-7c0.2-0.2,0.4-0.5,0.4-0.8S26.9,15.4,26.6,15.2z'></path>
+        </svg>
+    */
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIGhlaWdodD0nMzInIHdpZHRoPSczMicgZmlsbD0nIzAwMDAwMCcgdmlld0JveD0nMCAwIDMyIDMyJyB0cmFuc2Zvcm09J21hdHJpeCgtMSwwLDAsMSwwLDApJz48cGF0aCBkPSdNMjYuNiwxNS4ybC05LTdjLTAuMy0wLjItMC43LTAuMy0xLjEtMC4xQzE2LjIsOC4zLDE2LDguNiwxNiw5djVMOC42LDguMkM4LjMsOCw3LjksNy45LDcuNiw4LjFDNy4yLDguMyw3LDguNiw3LDl2MTRjMCwwLjQsMC4yLDAuNywwLjYsMC45QzcuNywyNCw3LjksMjQsOCwyNGMwLjIsMCwwLjQtMC4xLDAuNi0wLjJMMTYsMTh2NWMwLDAuNCwwLjIsMC43LDAuNiwwLjlDMTYuNywyNCwxNi45LDI0LDE3LDI0YzAuMiwwLDAuNC0wLjEsMC42LTAuMmw5LTdjMC4yLTAuMiwwLjQtMC41LDAuNC0wLjhTMjYuOSwxNS40LDI2LjYsMTUuMnonPjwvcGF0aD48L3N2Zz4=");
+}
+
+#backward-btn {
+    /*  data:image/svg+xml;utf8,
+        <svg xmlns='http://www.w3.org/2000/svg' height='32' width='32' fill='#000000' viewBox='0 0 32 32' transform='matrix(-1,0,0,1,0,0)'>
+        <path d='M21.6,15.2l-9-7c-0.3-0.2-0.7-0.3-1.1-0.1C11.2,8.3,11,8.6,11,9v14c0,0.4,0.2,0.7,0.6,0.9C11.7,24,11.9,24,12,24c0.2,0,0.4-0.1,0.6-0.2l9-7c0.2-0.2,0.4-0.5,0.4-0.8S21.9,15.4,21.6,15.2z'></path>
+        </svg>
+    */
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIGhlaWdodD0nMzInIHdpZHRoPSczMicgZmlsbD0nIzAwMDAwMCcgdmlld0JveD0nMCAwIDMyIDMyJyB0cmFuc2Zvcm09J21hdHJpeCgtMSwwLDAsMSwwLDApJz4KPHBhdGggZD0nTTIxLjYsMTUuMmwtOS03Yy0wLjMtMC4yLTAuNy0wLjMtMS4xLTAuMUMxMS4yLDguMywxMSw4LjYsMTEsOXYxNGMwLDAuNCwwLjIsMC43LDAuNiwwLjlDMTEuNywyNCwxMS45LDI0LDEyLDI0YzAuMiwwLDAuNC0wLjEsMC42LTAuMmw5LTdjMC4yLTAuMiwwLjQtMC41LDAuNC0wLjhTMjEuOSwxNS40LDIxLjYsMTUuMnonPjwvcGF0aD4KPC9zdmc+");
+}
+
+#stop-auto-btn {
+    /*  data:image/svg+xml;utf8,
+        <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='#000000' viewBox='0 0 32 32'>
+        <path d='M23,8H9C8.4,8,8,8.4,8,9v14c0,0.6,0.4,1,1,1h14c0.6,0,1-0.4,1-1V9C24,8.4,23.6,8,23,8z'/>
+        </svg>
+    */
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSczMicgaGVpZ2h0PSczMicgZmlsbD0nIzAwMDAwMCcgdmlld0JveD0nMCAwIDMyIDMyJz48cGF0aCBkPSdNMjMsOEg5QzguNCw4LDgsOC40LDgsOXYxNGMwLDAuNiwwLjQsMSwxLDFoMTRjMC42LDAsMS0wLjQsMS0xVjlDMjQsOC40LDIzLjYsOCwyMyw4eicvPjwvc3ZnPg==");
+}
+
+#forward-btn {
+    /*  data:image/svg+xml;utf8,
+        <svg xmlns='http://www.w3.org/2000/svg' height='32' width='32' fill='#000000' viewBox='0 0 32 32'>
+        <path d='M21.6,15.2l-9-7c-0.3-0.2-0.7-0.3-1.1-0.1C11.2,8.3,11,8.6,11,9v14c0,0.4,0.2,0.7,0.6,0.9C11.7,24,11.9,24,12,24c0.2,0,0.4-0.1,0.6-0.2l9-7c0.2-0.2,0.4-0.5,0.4-0.8S21.9,15.4,21.6,15.2z'/>
+        </svg>
+    */
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIGhlaWdodD0nMzInIHdpZHRoPSczMicgZmlsbD0nIzAwMDAwMCcgdmlld0JveD0nMCAwIDMyIDMyJz48cGF0aCBkPSdNMjEuNiwxNS4ybC05LTdjLTAuMy0wLjItMC43LTAuMy0xLjEtMC4xQzExLjIsOC4zLDExLDguNiwxMSw5djE0YzAsMC40LDAuMiwwLjcsMC42LDAuOUMxMS43LDI0LDExLjksMjQsMTIsMjRjMC4yLDAsMC40LTAuMSwwLjYtMC4ybDktN2MwLjItMC4yLDAuNC0wLjUsMC40LTAuOFMyMS45LDE1LjQsMjEuNiwxNS4yeicvPjwvc3ZnPg==");
+}
+
+#forward-auto-btn {
+    /*  data:image/svg+xml;utf8,
+        <svg xmlns='http://www.w3.org/2000/svg' height='32' width='32' fill='#000000' viewBox='0 0 32 32'>
+        <path d='M26.6,15.2l-9-7c-0.3-0.2-0.7-0.3-1.1-0.1C16.2,8.3,16,8.6,16,9v5L8.6,8.2C8.3,8,7.9,7.9,7.6,8.1C7.2,8.3,7,8.6,7,9v14c0,0.4,0.2,0.7,0.6,0.9C7.7,24,7.9,24,8,24c0.2,0,0.4-0.1,0.6-0.2L16,18v5c0,0.4,0.2,0.7,0.6,0.9C16.7,24,16.9,24,17,24c0.2,0,0.4-0.1,0.6-0.2l9-7c0.2-0.2,0.4-0.5,0.4-0.8S26.9,15.4,26.6,15.2z'/>
+        </svg>
+    */
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIGhlaWdodD0nMzInIHdpZHRoPSczMicgZmlsbD0nIzAwMDAwMCcgdmlld0JveD0nMCAwIDMyIDMyJz48cGF0aCBkPSdNMjYuNiwxNS4ybC05LTdjLTAuMy0wLjItMC43LTAuMy0xLjEtMC4xQzE2LjIsOC4zLDE2LDguNiwxNiw5djVMOC42LDguMkM4LjMsOCw3LjksNy45LDcuNiw4LjFDNy4yLDguMyw3LDguNiw3LDl2MTRjMCwwLjQsMC4yLDAuNywwLjYsMC45QzcuNywyNCw3LjksMjQsOCwyNGMwLjIsMCwwLjQtMC4xLDAuNi0wLjJMMTYsMTh2NWMwLDAuNCwwLjIsMC43LDAuNiwwLjlDMTYuNywyNCwxNi45LDI0LDE3LDI0YzAuMiwwLDAuNC0wLjEsMC42LTAuMmw5LTdjMC4yLTAuMiwwLjQtMC41LDAuNC0wLjhTMjYuOSwxNS40LDI2LjYsMTUuMnonLz48L3N2Zz4=");
+}
+
+button {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-left: 12px;
+    margin-right: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+span {
+    visibility: hidden;
+    width: auto;
+    top: 100%;
+    margin-left: -18px;
+    background-color: silver;
+    color: gray;
+    text-align: center;
+    padding: 0.25em 0.25em;
+    position: absolute;
+    z-index: 1;
+}
+
+button:hover span {
+    visibility: visible;
+}
+
+@keyframes time-animation {
+    0% {
+        width: 100%;
+    }
+    100% {
+        width: 0;
+    }
 }

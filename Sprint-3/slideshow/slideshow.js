@@ -33,31 +33,6 @@ function nextSlide() {
 }
 
 let count = null;
-let timer = null;
-
-function stopTimer() {
-    if (timer!=null) {
-        clearInterval(timer);
-        timer = null;
-        document.getElementById("time-remaining").innerHTML = "--:--";
-    }
-}
-
-function startTimer() {
-    let [minstr, secstr] = "00:05".split(":");
-    let second = Number(minstr)*60+Number(secstr);
-
-    stopTimer();
-    document.getElementById("time-remaining").innerHTML = minstr+":"+secstr;
-    timer = setInterval(() => {
-        if (second>0) {
-            second--;
-            minstr = Math.floor(second/60).toString().padStart(2, "0");
-            secstr = (second%60).toString().padStart(2, "0");
-            document.getElementById("time-remaining").innerHTML = minstr+":"+secstr;
-        }
-    }, 1000);
-}
 
 function stopAuto() {
     stopTimer();
@@ -85,4 +60,32 @@ function nextAuto() {
         startTimer();
         nextSlide();
     }, 5000);
+}
+
+let timer = null;
+
+function stopTimer() {
+    if (timer!=null) {
+        clearInterval(timer);
+        timer = null;
+        document.getElementById("time-remaining").innerHTML = "--:--";
+        document.getElementById("time-background").removeAttribute("style");
+    }
+}
+
+function startTimer() {
+    let [minstr, secstr] = "00:05".split(":");
+    let second = Number(minstr)*60+Number(secstr);
+
+    stopTimer();
+    document.getElementById("time-background").style.animation = "time-animation "+second+"s linear infinite";
+    document.getElementById("time-remaining").innerHTML = minstr+":"+secstr;
+    timer = setInterval(() => {
+        if (second>0) {
+            second--;
+            minstr = Math.floor(second/60).toString().padStart(2, "0");
+            secstr = (second%60).toString().padStart(2, "0");
+            document.getElementById("time-remaining").innerHTML = minstr+":"+secstr;
+        }
+    }, 1000);
 }

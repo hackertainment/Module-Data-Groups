@@ -9,11 +9,16 @@
   </head>
   <body>
     <img id="carousel-img" src="./assets/cute-cat-a.png" alt="cat-pic" />
-    <p id="time-remaining">--:--</p>
-    <button type="button" id="backward-auto-btn">Auto Backwards</button>
-    <button type="button" id="backward-btn">Backwards</button>
-    <button type="button" id="stop-auto-btn">Stop</button>
-    <button type="button" id="forward-btn">Forward</button>
-    <button type="button" id="forward-auto-btn">Auto Forward</button>
+    <div id="time-container">
+      <p id="time-background">&nbsp</p>
+      <p id="time-remaining">--:--</p>
+    </div>
+    <div id="btn-container">
+      <button type="button" id="backward-auto-btn"><span>Auto Backwards</span></button>
+      <button type="button" id="backward-btn"><span>Backwards</span></button>
+      <button type="button" id="stop-auto-btn"><span>Stop</span></button>
+      <button type="button" id="forward-btn"><span>Forward</span></button>
+      <button type="button" id="forward-auto-btn"><span>Auto Forward</span></button>
+    </div>
   </body>
 </html>
