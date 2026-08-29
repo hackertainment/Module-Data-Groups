@@ -30,13 +30,9 @@ export function toggleCompletedOnTask(todos, taskIndex) {
 
 // Removes all completed ToDos from todos[]
 export function deleteCompleted(todoList) {
-  let i = 0;
-  while (i<todoList.length) {
+  for (let i=todoList.length-1; i>=0; i--) {
     if (todoList[i].completed) {
       deleteTask(todoList, i);
-    }
-    else {
-      i++;
     }
   }
 }
